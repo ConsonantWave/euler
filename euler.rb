@@ -1,0 +1,45 @@
+require 'rubygems'
+require 'bundler/setup'
+require 'require_all'
+require 'sinatra'
+require 'haml'
+require_all 'lib'
+
+set :haml, :format => :html5
+
+get '/' do
+  @title = 'euler project solutions'
+  @problems = Problem.problems
+  haml :index
+end
+
+get '/problems/:id' do
+  @id = params[:id]
+  @title = "solution for euler problem #{@id}"
+  @problem = find_problem_from_id(@id)
+  @code = file_contents(@id)
+  (@solution, @time) = benchmark(@problem)
+  haml :problem
+end
+
+helpers do
+  def find_problem_from_id(id)
+    begin
+      eval "Problem#{id}"
+    rescue NameError
+      pass
+    end
+  end
+
+  def benchmark(problem)
+    t_0 = Time.now
+    solution = problem.solve
+    t_1 = Time.now
+    elapsed_time = (t_1 - t_0) * 1000 # in milliseconds
+    [solution, elapsed_time]
+  end
+
+  def file_contents(id)
+    IO.read(Dir.pwd << "/lib/problems/problem_#{id}.rb")
+  end
+end

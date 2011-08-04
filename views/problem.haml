@@ -1,0 +1,11 @@
+%h1
+  %a{:href => "http://projecteuler.net/index.php?section=problems&id=#{@id}"}problem #{@id}
+%h2= @problem.title
+%p
+  Code:
+  %br
+  %pre= @code
+%p Result: #{@solution}
+%p Elapsed Time: #{@time} ms
+%p
+  %a{:href => url('/')} Home

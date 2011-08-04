@@ -1,0 +1,7 @@
+%h1 sascha adler's euler project solutions
+%p here are all of my euler project solutions so far. (well, no, I've done about forty, but I can't find all the code.) -s
+%ul
+  - @problems.each do |problem|
+    %li
+      %a{:href => url("/problems/#{problem.id}")} Problem #{problem.id}
+      \: #{problem.title}
