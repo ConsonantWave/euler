@@ -5,7 +5,11 @@
   Code:
   %br
   %pre= @code
-%p Result: #{@solution}
-%p Elapsed Time: #{@time} ms
+%div#result
+  %p Working...
 %p
   %a{:href => url('/')} Home
+:javascript
+  $('#result').load('/solutions/#{@id}', function() {
+    $(this).hide().fadeIn();
+  });

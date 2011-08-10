@@ -6,6 +6,7 @@ require 'haml'
 require_all 'lib'
 
 set :haml, :format => :html5
+set :root, File.dirname(__FILE__)
 
 get '/' do
   @title = 'euler project solutions'
@@ -18,8 +19,14 @@ get '/problems/:id' do
   @title = "solution for euler problem #{@id}"
   @problem = find_problem_from_id(@id)
   @code = file_contents(@id)
-  (@solution, @time) = benchmark(@problem)
   haml :problem
+end
+
+get '/solutions/:id' do
+  @id = params[:id]
+  @problem = find_problem_from_id(@id)
+  (@solution, @time) = benchmark(@problem)
+  haml :solution, :layout => false
 end
 
 helpers do
