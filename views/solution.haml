@@ -1,2 +1,5 @@
-%p Result: #{@solution}
-%p Elapsed Time: #{@time} ms
+- if @solution
+  %p Result: #{@solution}
+  %p Elapsed Time: #{@time} ms
+- else
+  %p Execution did not complete within 30 s.
