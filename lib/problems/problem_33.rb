@@ -9,7 +9,6 @@ class Problem33 < Problem
     pairs = []
     (10..98).each {|n| (n+1..99).each { |d| pairs << PeculiarPair.new(n,d) } }
     valid_pairs = pairs.select { |p| p.valid? }
-    puts valid_pairs.inspect
     return valid_pairs.reduce { |product, p| product.to_r * p.to_r }.denominator
   end
 end
