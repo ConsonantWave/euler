@@ -19,4 +19,15 @@ class Integer
     end
     return sum
   end
+  
+  def digits_unique?
+    digit_array = self.to_s.each_char.to_a
+    digit_array == digit_array.uniq
+  end
+end
+
+class String
+  def pandigital?
+    self.each_char.to_a.sort.reduce(:+) == "123456789"
+  end
 end
