@@ -26,7 +26,7 @@ get '/solutions/:id' do
   @id = params[:id]
   @problem = find_problem_from_id(@id)
   thr = Thread.new { (@solution, @time) = benchmark(@problem) }
-  thr.join(30)
+  thr.join(60)
   haml :solution, :layout => false
 end
 
