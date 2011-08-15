@@ -13,7 +13,7 @@ class Problem32 < Problem
     ones.each do |md|
       fours.each do |mr|
         pr = md*mr
-        if pr.digits_unique? and (md.to_s + mr.to_s + pr.to_s).pandigital?
+        if pr.digits_unique? and (md.to_s + mr.to_s + pr.to_s).pandigital19?
           products[pr] = true
         end
       end
@@ -22,7 +22,7 @@ class Problem32 < Problem
     twos.each do |md|
       threes.each do |mr|
         pr = md*mr
-        if pr.digits_unique? and (md.to_s + mr.to_s + pr.to_s).pandigital?
+        if pr.digits_unique? and (md.to_s + mr.to_s + pr.to_s).pandigital19?
           products[pr] = true
         end
       end

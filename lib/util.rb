@@ -27,7 +27,16 @@ class Integer
 end
 
 class String
-  def pandigital?
+  def pandigital19?
     self.each_char.to_a.sort.reduce(:+) == "123456789"
+  end
+
+  def pandigital09?
+    self.each_char.to_a.sort.reduce(:<<) == "0123456789"
+  end
+
+  def has_dups?
+    char_array = self.each_char.to_a
+    char_array != char_array.uniq
   end
 end
