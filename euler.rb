@@ -33,7 +33,7 @@ end
 helpers do
   def find_problem_from_id(id)
     begin
-      eval "Problem#{id}"
+      Object.const_get "Problem#{id}"
     rescue NameError
       pass
     end
